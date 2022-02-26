@@ -14,7 +14,7 @@ quoteProps: as-needed
 jsxSingleQuote: false
 trailingComma: all
 bracketSpacing: true
-jsxBracketSameLine: false
+# jsxBracketSameLine: false
 arrowParens: avoid
 endOfLine: lf
 

@@ -11,16 +11,18 @@
     "lint:eslint": "eslint src --ext .ts,.tsx",
     "lint:prettier": "prettier --check src/**/*.{ts,tsx}",
     "fix": "yarn fix:eslint && yarn fix:prettier",
-    "fix:eslint": "yarn lint:eslint --fix",
-    "fix:prettier": "yarn lint:prettier --write",
+    "fix:eslint": "yarn eslint --fix src --ext .ts,.tsx",
+    "fix:prettier": "yarn prettier --write src/**/*.{ts,tsx}",
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -s public",
     "prepare": "husky install"
   },
   "dependencies": {
+    "axios": "^0.26.0",
     "next": "12.0.7",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "swr": "^1.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
@@ -44,19 +46,19 @@
     "eslint-config-next": "12.0.7",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-storybook": "^0.5.5",
+    "husky": "^7.0.0",
     "jest": "^27.4.7",
     "lint-staged": "^12.1.7",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
     "tailwindcss": "^3.0.12",
     "typescript": "4.5.4",
-    "webpack": "^5.65.0",
-    "husky": "^7.0.0"
+    "webpack": "^5.65.0"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --check"
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "yarn fix:eslint",
+      "yarn fix:prettier"
     ]
   }
 }
