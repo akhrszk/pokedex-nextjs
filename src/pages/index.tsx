@@ -1,5 +1,5 @@
 import { NextPageWithLayout } from './_app'
-import Layout from '../components/layouts/DefaultLayout'
+import DefaultLayout from '../components/layouts/DefaultLayout'
 import PokeTable from '../components/PokeTable'
 import useSWR from 'swr'
 
@@ -11,6 +11,6 @@ const Home: NextPageWithLayout = () => {
   return <PokeTable style="grid" pokemons={data || []} loading={false} />
 }
 
-Home.getLayout = page => <Layout>{page}</Layout>
+Home.getLayout = page => <DefaultLayout>{page}</DefaultLayout>
 
 export default Home

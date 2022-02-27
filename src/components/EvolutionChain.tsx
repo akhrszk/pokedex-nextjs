@@ -20,7 +20,7 @@ const EvolutionChain: React.FC<Props> = ({ evolution }) => (
                 width={150}
                 height={150}
               />
-              <div>{pokemon.name}</div>
+              <div className="text-center">{pokemon.name}</div>
             </a>
           </Link>
         </div>

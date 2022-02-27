@@ -9,16 +9,20 @@ type Props = {
   loading: boolean
 }
 
-const PokeList: React.FC<Props> = ({ style = 'list', pokemons, loading }) => {
+const PokeList: React.FC<Props> = ({
+  style = 'list',
+  pokemons = [],
+  loading = false,
+}) => {
   if (loading) {
     return <div>loading...</div>
   }
   const styles = [
     'flex',
     ...(style === 'list'
-      ? ['flex-col']
+      ? ['flex-col', 'gap-2']
       : style === 'grid'
-      ? ['flex-wrap']
+      ? ['flex-wrap', 'gap-4']
       : []),
   ]
   return (
@@ -36,7 +40,7 @@ export default PokeList
 export const Row: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
   const { id, name, sprite } = pokemon
   return (
-    <div className="p-2">
+    <div>
       <Link href={`/pokemons/${id}`}>
         <a>
           <Image alt={name} src={sprite} width={30} height={30} />
@@ -50,12 +54,12 @@ export const Row: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
 export const Item: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
   const { id, name, thumbnail } = pokemon
   return (
-    <div className="shrink-0 text-center w-24">
+    <div className="shrink-0">
       <Link href={`/pokemons/${id}`}>
         <a>
-          <Image alt={name} src={thumbnail} width={50} height={50} />
+          <Image alt={name} src={thumbnail} width={100} height={100} />
           <br />
-          {name}
+          <div className="text-center">{name}</div>
         </a>
       </Link>
     </div>

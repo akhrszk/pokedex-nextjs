@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { NextPageWithLayout } from '../_app'
-import Layout from '../../components/layouts/DefaultLayout'
+import DefaultLayout from '../../components/layouts/DefaultLayout'
 import PokeDexLayout from '../../components/layouts/PokeDexLayout'
-import Hero from '../../components/Hero'
-import FlavorText from '../../components/FlavorText'
+import HeroContainer from '../../components/HeroContainer'
 import EvolutionChain from '../../components/EvolutionChain'
+import SectionDivider from '../../components/SectionDivider'
 import { PokemonDetail as Pokemon } from '../../dto/Pokemon'
 
 const PokemonDetail: NextPageWithLayout = () => {
@@ -19,16 +19,10 @@ const PokemonDetail: NextPageWithLayout = () => {
     return <div>{error}</div>
   }
   return (
-    <div className="flex flex-col gap-4">
-      {data && <Hero pokemon={data} />}
-      <h2>
-        <PokemonId id={data?.id ?? `0`} />
-        {` `}
-        {data?.name}
-      </h2>
-      <FlavorText text={data?.flavorTextEntries[0]?.text ?? ``} />
+    <div className="flex flex-col gap-8">
+      {data && <HeroContainer pokemon={data} />}
       {(data?.evolution || []).length > 1 && (
-        <h3 className="text-center">進化</h3>
+        <SectionDivider>進化</SectionDivider>
       )}
       {(data?.evolution || []).length > 1 && (
         <EvolutionChain evolution={data?.evolution || []} />
@@ -37,14 +31,10 @@ const PokemonDetail: NextPageWithLayout = () => {
   )
 }
 
-const PokemonId: React.FC<{ id: string }> = ({ id }) => (
-  <span>No.{`00${id}`.slice(-3)}</span>
-)
-
 PokemonDetail.getLayout = page => (
-  <Layout>
+  <DefaultLayout>
     <PokeDexLayout>{page}</PokeDexLayout>
-  </Layout>
+  </DefaultLayout>
 )
 
 export default PokemonDetail

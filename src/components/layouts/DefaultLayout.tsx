@@ -13,7 +13,7 @@ const Layout: React.FC<Props> = ({ children, title }) => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <header>
-      <h1>
+      <h1 className="mx-4 my-8">
         <Link href="/">
           <a>ポケモン図鑑</a>
         </Link>

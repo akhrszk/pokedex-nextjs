@@ -1,5 +1,5 @@
 import { NextPageWithLayout } from '../_app'
-import Layout from '../../components/layouts/DefaultLayout'
+import DefaultLayout from '../../components/layouts/DefaultLayout'
 import PokeDexLayout from '../../components/layouts/PokeDexLayout'
 
 const PokemonIndex: NextPageWithLayout = () => (
@@ -7,9 +7,9 @@ const PokemonIndex: NextPageWithLayout = () => (
 )
 
 PokemonIndex.getLayout = page => (
-  <Layout>
+  <DefaultLayout>
     <PokeDexLayout>{page}</PokeDexLayout>
-  </Layout>
+  </DefaultLayout>
 )
 
 export default PokemonIndex
