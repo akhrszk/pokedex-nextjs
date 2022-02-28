@@ -1,23 +1,35 @@
 import React from 'react'
-import useSWR from 'swr'
-import PokeTable from '../PokeTable'
-
+import { GetStaticProps } from 'next'
+import PokeTable from '../../components/PokeTable'
 import { Pokemon } from '../../dto/Pokemon'
+import { getPokeDex } from '../../lib/pokemonApi'
 
-const PokeDexLayout: React.FC = ({ children }) => {
-  const { data, error } = useSWR<Pokemon[]>('/api/pokemons')
-  if (error) {
-    return <div>{error}</div>
-  }
-  const loading = !data && !error
-  return (
-    <div className="flex">
-      <div className="shrink-0 p-2">
-        <PokeTable pokemons={data ?? []} loading={loading} />
-      </div>
-      <div className="grow p-8">{children}</div>
-    </div>
-  )
+type Props = {
+  pokemons: Pokemon[]
 }
 
+const PokeDexLayout: React.FC<Props> = ({ children, pokemons }) => (
+  <div className="flex">
+    <div className="shrink-0 p-2">
+      <PokeTable style="list" pokemons={pokemons} />
+    </div>
+    <div className="grow p-8">{children}</div>
+  </div>
+)
+
 export default PokeDexLayout
+
+export const getStaticProps: GetStaticProps = async () => {
+  const pokemons = await getPokeDex()
+  return {
+    props: {
+      pokemons: pokemons.map(({ id, name, sprite, thumbnail, image }) => ({
+        id,
+        name,
+        sprite,
+        thumbnail,
+        image,
+      })),
+    },
+  }
+}

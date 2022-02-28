@@ -6,7 +6,7 @@ type Props = {
   title?: string
 }
 
-const Layout: React.FC<Props> = ({ children, title }) => (
+const DefaultLayout: React.FC<Props> = ({ children, title }) => (
   <>
     <Head>
       <title>{title && `${title} | `}ポケモン図鑑</title>
@@ -23,4 +23,4 @@ const Layout: React.FC<Props> = ({ children, title }) => (
   </>
 )
 
-export default Layout
+export default DefaultLayout
