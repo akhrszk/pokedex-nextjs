@@ -1,6 +1,11 @@
-# Next.js Template
+# PokeDex with Next.js
 
-This is a [Next.js](https://nextjs.org/) project starter template.
+![pokedex_nextjs](https://user-images.githubusercontent.com/28677705/156794807-c49cb33c-602e-4797-8a8f-aab7c1d02dd4.png)
+
+
+This project was deployed on Vercel.
+
+You can visit :point_right: https://pokedex-nextjs-ecru.vercel.app/
 
 ### Built with
 
@@ -75,9 +80,3 @@ For the details of the testing libraries this project is using, refer to the bel
 
 - [Jest](https://github.com/facebook/jest)
 - [React Testing Libraries](https://github.com/testing-library/react-testing-library)
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
